@@ -4,7 +4,36 @@
 #include <iostream>
 using namespace std;
 
-int main(){}
+void sortArray(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int j = i;
+        if (i % 2 == 0) {
+            while (j > 0 && arr[j] > arr[j - 1]) {
+                swap(arr[j], arr[j - 1]);
+                j--;
+            }
+        }
+        else {
+            while (j > 0 && arr[j] < arr[j - 1]) {
+                swap(arr[j], arr[j - 1]);
+                j--;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = { 5, 3, 1, 4, 2 };
+    int size = sizeof(arr) / sizeof(arr[0]);
+    sortArray(arr, size);
+    cout << "Sorted array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
