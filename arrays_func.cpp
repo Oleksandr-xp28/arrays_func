@@ -4,7 +4,40 @@
 #include <iostream>
 using namespace std;
 
-int main(){}
+void arrangeElements(int arr[], int size) {
+    int leftMost = -1;
+    int rightMost = -1;
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < 0) {
+            if (leftMost == -1) {
+                leftMost = i;
+            }
+            rightMost = i;
+        }
+    }
+    if (leftMost != -1 && rightMost != -1) {
+        for (int i = leftMost + 1; i < rightMost; i++) {
+            for (int j = i + 1; j < rightMost; j++) {
+                if (arr[i] > arr[j]) {
+                    swap(arr[i], arr[j]);
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = { 5, -3, 1, -4, 2 };
+    int size = sizeof(arr) / sizeof(arr[0]);
+    arrangeElements(arr, size);
+    cout << "Arranged array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
