@@ -4,7 +4,47 @@
 #include <iostream>
 using namespace std;
 
-int main(){}
+void sortArray(int arr[], int size, bool descending = false) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (descending) {
+                if (arr[j] < arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+            else {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = { 5, 3, 1, 4, 2 };
+    int size = sizeof(arr) / sizeof(arr[0]);
+    sortArray(arr, size);
+    cout << "Sorted in ascending order: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    sortArray(arr, size, true);
+    std::cout << "Sorted in descending order: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
